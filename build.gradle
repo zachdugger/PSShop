@@ -1,0 +1,108 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group = 'com.blissy'
+version = '1.0.0'
+description = 'Shop plugin for Pixelmon servers'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+    mavenCentral()
+
+    // Spigot repository
+    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+
+    // Paper repository
+    maven { url = 'https://papermc.io/repo/repository/maven-public/' }
+
+    // For Vault and other Bukkit-related dependencies
+    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+
+    // For NBT API
+    maven { url = 'https://repo.codemc.org/repository/maven-public/' }
+}
+
+dependencies {
+    // Spigot API from online repository
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+
+    // Vault for economy integration
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
+
+    // NBT API for easier NBT manipulation
+    implementation 'de.tr7zw:item-nbt-api:2.8.0'
+
+    // TokenManager and GemExtension are custom plugins, so we still need these locally
+    compileOnly files('libs/TokenManager-3.2.8.jar')
+    compileOnly files('libs/GemExtension-1.0.0.jar')
+
+    // Pixelmon - local JAR with corrected version
+    compileOnly files('libs/Pixelmon-1.16.5-9.1.13-universal.jar')
+}
+
+processResources {
+    // Set duplicates strategy to handle duplicates
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    // Include plugin.yml and config files
+    from('src/main/resources') {
+        include 'plugin.yml'
+        // Replace version in plugin.yml
+        expand(
+                version: project.version
+        )
+    }
+
+    // Include config.yml without template processing
+    from('src/main/resources') {
+        include 'config.yml'
+        // Disable template processing for this file
+        filter { line -> line }
+    }
+
+    // Also include categories.yml and items.yml
+    from('src/main/resources') {
+        include 'categories.yml', 'items.yml'
+        // Disable template processing for these files
+        filter { line -> line }
+    }
+}
+
+shadowJar {
+    archiveBaseName.set(project.name)
+    archiveClassifier.set('')
+    archiveVersion.set(project.version.toString())
+
+    // Exclude server-provided dependencies from the shadow JAR
+    dependencies {
+        exclude(dependency('org.spigotmc:spigot-api'))
+        exclude(dependency('com.github.MilkBowl:VaultAPI'))
+    }
+
+    // Relocate NBT API to prevent conflicts
+    relocate 'de.tr7zw.changeme.nbtapi', 'com.blissy.shop.lib.nbtapi'
+}
+
+build {
+    dependsOn shadowJar
+}
+
+// Force UTF-8 encoding
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// Create libs directory if it doesn't exist
+task createLibsDir {
+    doLast {
+        mkdir 'libs'
+    }
+}
+
+compileJava.dependsOn createLibsDir

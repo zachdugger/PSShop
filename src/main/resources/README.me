@@ -1,0 +1,163 @@
+# PokeShop Plugin
+
+A custom shop plugin for Pixelmon servers that supports multiple currencies and fully configurable shop categories and items.
+
+## Features
+
+- Multiple currency support:
+  - EssentialsX currency (via Vault)
+  - TokenManager tokens
+  - Custom Gems
+- Configurable shop categories
+- Support for both Pixelmon items and regular Minecraft items
+- Easy-to-use GUI interface
+- Permission-based access
+
+## Requirements
+
+- Spigot/Paper 1.16.x (or newer)
+- Vault
+- EssentialsX (for coins)
+- TokenManager (for tokens, optional)
+- GemExtension (for gems, optional)
+- Pixelmon Reforged (latest version recommended)
+
+## Installation
+
+1. Place the `PokeShop.jar` file in your server's `plugins` folder
+2. Start or restart your server
+3. The plugin will generate default configuration files
+4. Configure the `config.yml`, `categories.yml`, and `items.yml` files to your liking
+5. Use `/shop reload` to apply changes without restarting the server
+
+## Commands
+
+- `/shop` - Open the main shop menu
+- `/shop category <categoryId>` - Open a specific category directly
+- `/shop help` - Show help information
+- `/shop reload` - Reload the plugin configuration (requires `shop.admin` permission)
+
+## Permissions
+
+- `shop.use` - Allow access to the shop (default: true)
+- `shop.admin` - Allow access to admin commands like reload (default: op)
+
+## Configuration
+
+### config.yml
+
+This file contains general settings for the plugin, including currency settings and GUI customization.
+
+```yaml
+# GUI settings
+gui:
+  title: "PokeShop"
+  border_material: "GRAY_STAINED_GLASS_PANE"
+
+# Currency settings
+currencies:
+  coins:
+    enabled: true
+    display_name: "PokeCoins"
+    symbol: "$"
+    color: "e"
+
+  tokens:
+    enabled: true
+    display_name: "Tokens"
+    symbol: "⛃"
+    color: "b"
+
+  gems:
+    enabled: true
+    display_name: "Gems"
+    symbol: "♦"
+    color: "a"
+```
+
+### categories.yml
+
+This file defines the shop categories that appear in the main menu.
+
+```yaml
+categories:
+  pokeballs:
+    name: "Poké Balls"
+    icon: "SNOWBALL"
+    description:
+      - "Various types of Poké Balls"
+      - "for catching Pokémon."
+    slot: 10
+    items:
+      - "pokeball"
+      - "greatball"
+      - "ultraball"
+```
+
+### items.yml
+
+This file defines all items that can be purchased in the shop.
+
+```yaml
+items:
+  pokeball:
+    name: "&fPoké Ball"
+    material: "SNOWBALL"
+    amount: 10
+    description:
+      - "A device for catching"
+      - "wild Pokémon."
+    currency: "coins"
+    price: 200
+    slot: 10
+    pixelmon_id: "pokeball"
+```
+
+## Working with Pixelmon Items
+
+When configuring Pixelmon items, you need to specify:
+
+1. The Pixelmon item ID in `pixelmon_id`
+2. Optional NBT data in `pixelmon_nbt` section
+
+For example, a TM would look like:
+
+```yaml
+tm_thunderbolt:
+  name: "&eTM24: Thunderbolt"
+  material: "tm"
+  amount: 1
+  description:
+    - "A move that may also"
+    - "leave the target paralyzed."
+  currency: "tokens"
+  price: 30
+  slot: 10
+  pixelmon_id: "tm_thunderbolt"
+  pixelmon_nbt:
+    move: "thunderbolt"
+```
+
+## Troubleshooting
+
+**Problem: Items appear as the fallback material instead of the Pixelmon item**
+- Check that the `pixelmon_id` is correct
+- Verify that the plugin can access the Pixelmon API
+- Check console for error messages
+
+**Problem: Currency not working**
+- For Vault currency: Make sure EssentialsX and Vault are installed
+- For tokens: Make sure TokenManager is installed
+- For gems: Make sure GemExtension is installed
+- Check the `currencies` section in config.yml
+
+**Problem: GUI not opening**
+- Check that the player has the `shop.use` permission
+- Check console for error messages
+
+## Credits
+
+Created by Blissy for Pixelmon Stadium.
+## License
+
+This plugin is provided as-is with no warranty. You are free to use and modify it for your server.

@@ -1,0 +1,40 @@
+# Shop Configuration
+
+# GUI settings
+gui:
+  # Title of the main menu
+  title: "PokeShop"
+  # Border item material
+  border_material: "GRAY_STAINED_GLASS_PANE"
+
+# Currency settings
+currencies:
+  coins:
+    enabled: true
+    # Display name (optional, defaults to EssentialsX currency name)
+    display_name: "PokeCoins"
+    # Symbol to display before amount
+    symbol: "$"
+    # Color code for display (without §)
+    color: "e"
+
+  tokens:
+    enabled: true
+    display_name: "Tokens"
+    symbol: "⛃"
+    color: "b"
+
+  gems:
+    enabled: true
+    display_name: "Gems"
+    symbol: "♦"
+    color: "a"
+
+# Message settings (you can customize shop messages here)
+messages:
+  prefix: "&6[Shop] &r"
+  no_permission: "&cYou don't have permission to use this command."
+  purchase_success: "&aYou purchased &e{amount}x {item} &afor {currency} {price}!"
+  purchase_failed: "&cFailed to purchase {item}!"
+  insufficient_funds: "&cYou don't have enough {currency}! Required: {price}, You have: {balance}"
+  insufficient_space: "&cYou don't have enough inventory space!"

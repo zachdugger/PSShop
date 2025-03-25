@@ -1,0 +1,23 @@
+name: PokeShop
+version: 1.0.0
+main: com.blissy.shop.Shop
+description: A shop plugin for Pixelmon servers with multiple currency support
+api-version: 1.16
+authors: [Blissy]
+depend: [Vault]
+softdepend: [TokenManager, GemExtension, Pixelmon]
+
+commands:
+  shop:
+    description: Access the server shop
+    usage: /shop [category|help|reload]
+    aliases: [pshop, pokeshop]
+    permission: shop.use
+
+permissions:
+  shop.use:
+    description: Allows access to the shop
+    default: true
+  shop.admin:
+    description: Allows access to shop admin commands (reload)
+    default: op

@@ -1,0 +1,362 @@
+# Example Pixelmon Item Entries for items.yml
+# These are examples you can use as references when adding your own items
+
+# PokeBall Examples
+pokeball:
+  name: "&fPoké Ball"
+  material: "poke_ball"
+  amount: 10
+  description:
+    - "A device for catching"
+    - "wild Pokémon."
+    - "The regular Poké Ball"
+    - "has a basic catch rate."
+  currency: "coins"
+  price: 200
+  slot: 10
+  pixelmon_id: "poke_ball"
+
+greatball:
+  name: "&9Great Ball"
+  material: "great_ball"
+  amount: 10
+  description:
+    - "A good, high-performance"
+    - "Ball with a higher catch"
+    - "rate than a standard"
+    - "Poké Ball."
+  currency: "coins"
+  price: 600
+  slot: 11
+  pixelmon_id: "great_ball"
+
+ultraball:
+  name: "&eUltra Ball"
+  material: "ultra_ball"
+  amount: 10
+  description:
+    - "An ultra-performance"
+    - "Ball with a higher catch"
+    - "rate than a Great Ball."
+  currency: "coins"
+  price: 1200
+  slot: 12
+  pixelmon_id: "ultra_ball"
+
+# Apricorn Examples
+apricorn_black:
+  name: "&8Black Apricorn"
+  material: "INK_SAC"
+  amount: 5
+  description:
+    - "A hard black Apricorn"
+    - "that can be crafted into"
+    - "special Poké Balls."
+  currency: "coins"
+  price: 100
+  slot: 10
+  pixelmon_id: "black_apricorn"
+
+apricorn_white:
+  name: "&fWhite Apricorn"
+  material: "BONE_MEAL"
+  amount: 5
+  description:
+    - "A hard white Apricorn"
+    - "that can be crafted into"
+    - "special Poké Balls."
+  currency: "coins"
+  price: 100
+  slot: 11
+  pixelmon_id: "white_apricorn"
+
+# Berry Examples
+oran_berry:
+  name: "&9Oran Berry"
+  material: "SWEET_BERRIES"
+  amount: 5
+  description:
+    - "A berry that restores"
+    - "10 HP to a Pokémon."
+  currency: "coins"
+  price: 50
+  slot: 10
+  pixelmon_id: "oran_berry"
+
+sitrus_berry:
+  name: "&eSitrus Berry"
+  material: "SWEET_BERRIES"
+  amount: 5
+  description:
+    - "A berry that restores"
+    - "30 HP to a Pokémon."
+  currency: "coins"
+  price: 150
+  slot: 11
+  pixelmon_id: "sitrus_berry"
+
+# Battle Item Examples
+x_attack:
+  name: "&cX Attack"
+  material: "REDSTONE"
+  amount: 5
+  description:
+    - "An item that boosts"
+    - "the Attack stat of"
+    - "a Pokémon in battle."
+  currency: "coins"
+  price: 500
+  slot: 10
+  pixelmon_id: "x_attack"
+
+x_defense:
+  name: "&bX Defense"
+  material: "LAPIS_LAZULI"
+  amount: 5
+  description:
+    - "An item that boosts"
+    - "the Defense stat of"
+    - "a Pokémon in battle."
+  currency: "coins"
+  price: 550
+  slot: 11
+  pixelmon_id: "x_defense"
+
+# Held Item Examples
+choice_band:
+  name: "&6Choice Band"
+  material: "choice_band"
+  amount: 1
+  description:
+    - "A held item that boosts"
+    - "Attack but only allows"
+    - "the use of one move."
+  currency: "tokens"
+  price: 20
+  slot: 10
+  pixelmon_id: "choice_band"
+
+leftovers:
+  name: "&7Leftovers"
+  material: "leftovers"
+  amount: 1
+  description:
+    - "A held item that restores"
+    - "a little HP every turn."
+  currency: "tokens"
+  price: 15
+  slot: 11
+  pixelmon_id: "leftovers"
+
+# TM Examples
+tm_thunderbolt:
+  name: "&eTM24: Thunderbolt"
+  material: "MUSIC_DISC_MALL"
+  amount: 1
+  description:
+    - "A move that may also"
+    - "leave the target paralyzed."
+    - "Electric-Type, 90 Power, 15 PP"
+    - "May paralyze target (10%)"
+  currency: "tokens"
+  price: 30
+  slot: 10
+  pixelmon_id: "tm_thunderbolt"
+  pixelmon_nbt:
+    move: "thunderbolt"
+
+tm_flamethrower:
+  name: "&cTM35: Flamethrower"
+  material: "MUSIC_DISC_MALL"
+  amount: 1
+  description:
+    - "A move that may also"
+    - "burn the target."
+    - "Fire-Type, 90 Power, 15 PP"
+    - "May burn target (10%)"
+  currency: "tokens"
+  price: 30
+  slot: 11
+  pixelmon_id: "tm_flamethrower"
+  pixelmon_nbt:
+    move: "flamethrower"
+
+# Z-Crystal Examples
+normalium_z:
+  name: "&fNormalium Z"
+  material: "QUARTZ"
+  amount: 1
+  description:
+    - "A crystal that allows"
+    - "Normal-type Pokémon to"
+    - "upgrade Normal-type moves"
+    - "into Z-Moves."
+  currency: "gems"
+  price: 15
+  slot: 10
+  glowing: true
+  pixelmon_id: "normalium_z"
+
+waterium_z:
+  name: "&9Waterium Z"
+  material: "LAPIS_LAZULI"
+  amount: 1
+  description:
+    - "A crystal that allows"
+    - "Water-type Pokémon to"
+    - "upgrade Water-type moves"
+    - "into Z-Moves."
+  currency: "gems"
+  price: 15
+  slot: 11
+  glowing: true
+  pixelmon_id: "waterium_z"
+
+# Pixelmon Ore Examples
+aluminum_ore:
+  name: "&7Aluminum Ore"
+  material: "IRON_ORE"
+  amount: 16
+  description:
+    - "Ore used to craft"
+    - "Pixelmon machines and items."
+  currency: "coins"
+  price: 320
+  slot: 10
+  pixelmon_id: "aluminum_ore"
+
+crystal_ore:
+  name: "&bCrystal Ore"
+  material: "DIAMOND_ORE"
+  amount: 8
+  description:
+    - "Rare ore used to craft"
+    - "high-end Pixelmon items."
+  currency: "coins"
+  price: 640
+  slot: 11
+  pixelmon_id: "crystal_ore"
+
+# Sellable Items Examples
+nugget:
+  name: "&eNugget"
+  material: "GOLD_NUGGET"
+  amount: 1
+  description:
+    - "A nugget of pure gold"
+    - "that can be sold at"
+    - "a high price."
+  currency: "coins"
+  price: 5000
+  slot: 10
+  pixelmon_id: "nugget"
+
+stardust:
+  name: "&6Stardust"
+  material: "GLOWSTONE_DUST"
+  amount: 1
+  description:
+    - "Lovely red sand with a"
+    - "mysterious spark that can"
+    - "be sold at a high price."
+  currency: "coins"
+  price: 3000
+  slot: 11
+  pixelmon_id: "stardust"
+
+# Poké Decoration Examples
+poke_bench:
+  name: "&ePokémon Center Bench"
+  material: "OAK_STAIRS"
+  amount: 1
+  description:
+    - "A decorative bench like"
+    - "those found in Pokémon Centers."
+  currency: "coins"
+  price: 250
+  slot: 10
+  pixelmon_id: "poke_bench"
+
+fossil_display:
+  name: "&6Fossil Display"
+  material: "GLASS"
+  amount: 1
+  description:
+    - "A glass display case"
+    - "for showcasing Pokémon fossils."
+  currency: "coins"
+  price: 750
+  slot: 11
+  pixelmon_id: "fossil_display"
+
+# Breeding Items Examples
+destiny_knot:
+  name: "&dDestiny Knot"
+  material: "STRING"
+  amount: 1
+  description:
+    - "A held item that makes"
+    - "the holder pass down"
+    - "5 IVs to offspring."
+  currency: "tokens"
+  price: 25
+  slot: 10
+  pixelmon_id: "destiny_knot"
+
+everstone:
+  name: "&7Everstone"
+  material: "STONE"
+  amount: 1
+  description:
+    - "A held item that prevents"
+    - "the holder from evolving and"
+    - "passes down Nature when breeding."
+  currency: "tokens"
+  price: 15
+  slot: 11
+  pixelmon_id: "everstone"
+
+# Regular Minecraft Building Blocks Examples
+oak_log:
+  name: "&6Oak Log"
+  material: "OAK_LOG"
+  amount: 64
+  description:
+    - "A basic building block"
+    - "from oak trees."
+  currency: "coins"
+  price: 100
+  slot: 10
+
+stone_bricks:
+  name: "&7Stone Bricks"
+  material: "STONE_BRICKS"
+  amount: 64
+  description:
+    - "Decorative stone bricks"
+    - "for a classic look."
+  currency: "coins"
+  price: 150
+  slot: 11
+
+glass_block:
+  name: "&fGlass"
+  material: "GLASS"
+  amount: 64
+  description:
+    - "Transparent blocks that"
+    - "let light through."
+  currency: "coins"
+  price: 200
+  slot: 12
+
+blue_wool:
+  name: "&9Blue Wool"
+  material: "BLUE_WOOL"
+  amount: 64
+  description:
+    - "Soft blue wool blocks"
+    - "perfect for decoration."
+  currency: "coins"
+  price: 120
+  slot: 13
