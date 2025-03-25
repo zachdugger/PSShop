@@ -1,7 +1,8 @@
 # Shop Categories Configuration
 # Each category must have a unique ID and contain the following properties:
 # - name: Display name of the category
-# - icon: Material to use as the icon
+# - icon: Material to use as the icon (can be a Pixelmon item ID)
+# - pixelmon_icon: Set to true if the icon is a Pixelmon item
 # - description: List of lines to show in the lore
 # - slot: Slot in the main menu (0-53, top left is 0, bottom right is 53)
 # - items: List of item IDs in this category
@@ -10,190 +11,211 @@ categories:
   # Pixelmon Categories
   pokeballs:
     name: "Poké Balls"
-    icon: "ultra_ball"  # Replace with proper Pixelmon material if needed
+    icon: "ultra_ball"
+    pixelmon_icon: true
     description:
       - "Various types of Poké Balls"
       - "for catching Pokémon."
     slot: 10
-    items: []  # You'll add item IDs here
+    items: []
 
   apricorns:
     name: "Apricorns"
-    icon: "blue_apricorn"  # Replace with proper Pixelmon material if needed
+    icon: "blue_apricorn"
+    pixelmon_icon: true
     description:
       - "Apricorns used for crafting"
       - "custom Poké Balls."
     slot: 11
-    items: []  # You'll add item IDs here
+    items: []
 
   battle_items:
     name: "Battle Items"
     icon: "hyper_potion"
+    pixelmon_icon: true
     description:
       - "Items for boosting"
       - "your Pokémon in battle."
     slot: 12
-    items: []  # You'll add item IDs here
+    items: []
 
   berries:
     name: "Berries"
     icon: "SWEET_BERRIES"
+    pixelmon_icon: false
     description:
       - "Berries for healing and"
       - "enhancing your Pokémon."
     slot: 13
-    items: []  # You'll add item IDs here
+    items: []
 
   breeding:
     name: "Breeding Items"
-    icon: "EGG"
+    icon: "destiny_knot"
+    pixelmon_icon: true
     description:
       - "Items to help with"
       - "Pokémon breeding."
     slot: 14
-    items: []  # You'll add item IDs here
+    items: []
 
   held_items:
     name: "Held/Evolution Items"
     icon: "choice_scarf"
+    pixelmon_icon: true
     description:
       - "Pokemon held and"
       - "evolution items."
     slot: 15
-    items: []  # You'll add item IDs here
+    items: []
 
   poke_ores:
     name: "Poké Ores"
-    icon: "DIAMOND_ORE"
+    icon: "crystal_ore"
+    pixelmon_icon: true
     description:
       - "Special ores used in"
       - "Pixelmon crafting."
     slot: 16
-    items: []  # You'll add item IDs here
+    items: []
 
   sellable_items:
     name: "Sellable Items"
     icon: "gold_bottle_cap"
+    pixelmon_icon: true
     description:
       - "Items you can sell"
       - "for Poke Coins."
     slot: 19
-    items: []  # You'll add item IDs here
+    items: []
 
   poke_decoration:
     name: "Poké Decoration"
-    icon: "red_folding_chair"
+    icon: "red_chair"
+    pixelmon_icon: true
     description:
       - "Decoration items from"
       - "the Pokémon world."
     slot: 20
-    items: []  # You'll add item IDs here
+    items: []
 
   tms:
     name: "TMs"
-    icon: "tm5"
+    icon: "tm_thunderbolt"
+    pixelmon_icon: true
     description:
       - "Technical Machines for"
       - "teaching moves to Pokémon."
     slot: 21
-    items: []  # You'll add item IDs here
+    items: []
 
   z_crystals:
     name: "Z-Crystals"
     icon: "waterium_z"
+    pixelmon_icon: true
     description:
       - "Special crystals for"
       - "powerful Z-Moves."
     slot: 22
-    items: []  # You'll add item IDs here
+    items: []
 
   # Building Categories
   decoration:
     name: "Decoration"
     icon: "LANTERN"
+    pixelmon_icon: false
     description:
       - "Various decorative blocks"
       - "for your buildings."
     slot: 28
-    items: []  # You'll add item IDs here
+    items: []
 
   wood_leaves:
     name: "Wood & Leaves"
     icon: "OAK_LOG"
+    pixelmon_icon: false
     description:
       - "Wood logs, planks, and"
       - "leaf blocks."
     slot: 29
-    items: []  # You'll add item IDs here
+    items: []
 
   dirt_sand:
     name: "Dirt & Sand"
-    icon: "GRASS"
+    icon: "GRASS_BLOCK"
+    pixelmon_icon: false
     description:
       - "Various types of dirt,"
       - "sand, and soil blocks."
     slot: 30
-    items: []  # You'll add item IDs here
+    items: []
 
   glass:
     name: "Glass"
     icon: "GLASS"
+    pixelmon_icon: false
     description:
       - "Glass blocks and panes"
       - "of various colors."
     slot: 31
-    items: []  # You'll add item IDs here
+    items: []
 
   wool:
     name: "Wool"
     icon: "WHITE_WOOL"
+    pixelmon_icon: false
     description:
       - "Wool blocks in"
       - "various colors."
     slot: 32
-    items: []  # You'll add item IDs here
+    items: []
 
   concrete:
     name: "Concrete"
     icon: "LIGHT_BLUE_CONCRETE"
+    pixelmon_icon: false
     description:
       - "Concrete blocks and powder"
       - "in various colors."
     slot: 33
-    items: []  # You'll add item IDs here
+    items: []
 
   terracotta:
     name: "Terracotta"
     icon: "TERRACOTTA"
+    pixelmon_icon: false
     description:
       - "Terracotta blocks in"
       - "various colors."
     slot: 34
-    items: []  # You'll add item IDs here
+    items: []
 
   ores:
     name: "Ores"
     icon: "DIAMOND"
+    pixelmon_icon: false
     description:
       - "Various ores and"
       - "mineral blocks."
     slot: 37
-    items: []  # You'll add item IDs here
+    items: []
 
   dyes:
     name: "Dyes"
     icon: "RED_DYE"
+    pixelmon_icon: false
     description:
       - "Dyes in all"
       - "available colors."
     slot: 38
-    items: []  # You'll add item IDs here
+    items: []
 
   flowers_coral:
     name: "Flowers & Coral"
     icon: "POPPY"
+    pixelmon_icon: false
     description:
       - "Various flowers and"
       - "coral blocks."
     slot: 39
-    items: []  # You'll add item IDs here
+    items: []

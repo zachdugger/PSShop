@@ -80,20 +80,13 @@ public class ShopManager {
                 }
 
                 String name = categorySection.getString("name", categoryId);
-                String iconStr = categorySection.getString("icon", "STONE");
+                String iconId = categorySection.getString("icon", "STONE");
+                boolean isPixelmonIcon = categorySection.getBoolean("pixelmon_icon", false);
                 List<String> description = categorySection.getStringList("description");
                 int slot = categorySection.getInt("slot", 0);
                 List<String> itemList = categorySection.getStringList("items");
 
-                Material icon;
-                try {
-                    icon = Material.valueOf(iconStr.toUpperCase());
-                } catch (IllegalArgumentException e) {
-                    plugin.getLogger().warning("Invalid material for category " + categoryId + ": " + iconStr);
-                    icon = Material.STONE;
-                }
-
-                ShopCategory category = new ShopCategory(categoryId, name, icon, description, slot, itemList);
+                ShopCategory category = new ShopCategory(categoryId, name, iconId, isPixelmonIcon, description, slot, itemList);
                 categories.put(categoryId, category);
 
                 plugin.getLogger().info("Loaded category: " + categoryId);

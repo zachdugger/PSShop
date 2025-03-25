@@ -51,20 +51,22 @@ public class Shop extends JavaPlugin {
         shopManager = new ShopManager(this);
         shopManager.loadShopData();
 
-        // Register command
-        PluginCommand command = getCommand("shop");
-        if (command == null) {
+        // Register shop command
+        PluginCommand shopCommand = getCommand("shop");
+        if (shopCommand == null) {
             getLogger().severe("Failed to get shop command! The plugin.yml might not be loaded correctly.");
         } else {
             ShopCommand shopCmd = new ShopCommand(this);
-            command.setExecutor(shopCmd);
-            command.setTabCompleter(shopCmd);
+            shopCommand.setExecutor(shopCmd);
+            shopCommand.setTabCompleter(shopCmd);
             getLogger().info("Shop command registered successfully!");
         }
 
+        // Register TM/TR command
+        registerTMTRCommand();
+
         getLogger().info("Shop has been enabled!");
     }
-
     @Override
     public void onDisable() {
         getLogger().info("Shop has been disabled!");
@@ -216,5 +218,76 @@ public class Shop extends JavaPlugin {
      */
     public com.blissy.gemextension.GemExtensionPlugin getGemExtension() {
         return gemExtension;
+    }
+    /**
+     * Add all TMs and TRs to the shop
+     * Call this method to populate your shop with all Pixelmon TMs and TRs
+     * This will create type-based categories and add all available moves
+     */
+    public void addAllTMsAndTRs() {
+        getLogger().info("Starting to add all TMs and TRs to the shop...");
+
+        // Create and run the utility
+        com.blissy.shop.util.AddTechnicalMovesToShop tmtrAdder =
+                new com.blissy.shop.util.AddTechnicalMovesToShop(this);
+        tmtrAdder.addAllTechnicalMoves();
+
+        getLogger().info("Completed adding TMs and TRs to the shop!");
+    }
+
+    /**
+     * Create a command to add all TMs and TRs to the shop
+     * This can be called by admins in-game
+     */
+    public void registerTMTRCommand() {
+        PluginCommand command = getCommand("shopaddtmtr");
+        if (command != null) {
+            command.setExecutor(new CommandExecutor() {
+                @Override
+                public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+                    if (!sender.hasPermission("shop.admin")) {
+                        sender.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
+                        return true;
+                    }
+
+                    sender.sendMessage(ChatColor.GOLD + "Starting to add all TMs and TRs to the shop...");
+                    sender.sendMessage(ChatColor.GOLD + "This may take a moment, please be patient.");
+
+                    // Run in async task to prevent server lag
+                    Bukkit.getScheduler().runTaskAsynchronously(Shop.this, new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                addAllTMsAndTRs();
+
+                                // Switch back to main thread to notify player
+                                Bukkit.getScheduler().runTask(Shop.this, new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        sender.sendMessage(ChatColor.GREEN + "Successfully added all TMs and TRs to the shop!");
+                                        sender.sendMessage(ChatColor.GREEN + "Use /shop reload to apply changes.");
+                                    }
+                                });
+                            } catch (Exception e) {
+                                getLogger().log(Level.SEVERE, "Error adding TMs and TRs", e);
+
+                                // Switch back to main thread to notify player
+                                Bukkit.getScheduler().runTask(Shop.this, new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        sender.sendMessage(ChatColor.RED + "Error adding TMs and TRs. Check console for details.");
+                                    }
+                                });
+                            }
+                        }
+                    });
+
+                    return true;
+                }
+            });
+            getLogger().info("Registered shopaddtmtr command!");
+        } else {
+            getLogger().warning("Failed to register shopaddtmtr command! Add it to plugin.yml first.");
+        }
     }
 }

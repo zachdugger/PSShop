@@ -13,11 +13,15 @@ commands:
     usage: /shop [category|help|reload]
     aliases: [pshop, pokeshop]
     permission: shop.use
+  shopaddtmtr:
+    description: Add all TMs and TRs to the shop
+    usage: /shopaddtmtr
+    permission: shop.admin
 
 permissions:
   shop.use:
     description: Allows access to the shop
     default: true
   shop.admin:
-    description: Allows access to shop admin commands (reload)
+    description: Allows access to shop admin commands (reload, adding TMs/TRs)
     default: op
